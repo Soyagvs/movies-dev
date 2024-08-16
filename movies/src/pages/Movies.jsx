@@ -23,10 +23,10 @@ export const Movies = () => {
       } finally {
         setLoading(false);
       }
-    };
+    }
 
     fetchData();
-  }); // El array vacío asegura que se ejecute solo una vez al montar el componente
+  },[]); // El array vacío asegura que se ejecute solo una vez al montar el componente
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
