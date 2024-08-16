@@ -34,7 +34,7 @@ export const Movies = () => {
     }
 
     fetchData();
-  }, []); // El array vacío asegura que se ejecute solo una vez al montar el componente
+  }, [POPULAR_MOVIES_URL]); // El array vacío asegura que se ejecute solo una vez al montar el componente
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
