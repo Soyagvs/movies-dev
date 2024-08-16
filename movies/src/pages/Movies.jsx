@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export const ApiConsumer = () => {
+export const Movies = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -32,8 +32,8 @@ export const ApiConsumer = () => {
   if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <div>
-      <h1>Popular Movies:</h1>
+    <>
+      <h2>Popular Peliculas:</h2>
       <ul>
         {data.map(movie => (
           <li key={movie.id}>
@@ -46,6 +46,6 @@ export const ApiConsumer = () => {
           </li>
         ))}
       </ul>
-    </div>
+    </>
   );
 };

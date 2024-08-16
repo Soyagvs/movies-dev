@@ -12,7 +12,7 @@ export const Navigation = () => {
             <Link to="/">Home</Link>
           </li>
           <li className="text-xl font-semibold">
-            <Link to="/peliculas">Peliculas</Link>
+            <Link to="/movies">Peliculas</Link>
           </li>
           <li className="text-xl font-semibold">
             <Link to="/series">Series</Link>
