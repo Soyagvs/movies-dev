@@ -11,8 +11,16 @@ export const Movies = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      const options = {
+        method: 'GET',
+        headers: {
+          accept: 'application/json',
+          Authorization: `Bearer ${API_KEY}`
+        }
+      };
+
       try {
-        const response = await fetch(POPULAR_MOVIES_URL);
+        const response = await fetch(POPULAR_MOVIES_URL, options);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -26,23 +34,25 @@ export const Movies = () => {
     }
 
     fetchData();
-  },[]); // El array vacío asegura que se ejecute solo una vez al montar el componente
+  }, []); // El array vacío asegura que se ejecute solo una vez al montar el componente
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
   return (
     <>
-      <h2>Popular Peliculas:</h2>
+      <h2>Popular Películas:</h2>
       <ul>
         {data.map(movie => (
           <li key={movie.id}>
-            <h2>{movie.title}</h2>
+            <h3>{movie.title}</h3>
             <p>{movie.overview}</p>
-            <img 
-              src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} 
-              alt={movie.title} 
-            />
+            {movie.poster_path && (
+              <img 
+                src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} 
+                alt={movie.title} 
+              />
+            )}
           </li>
         ))}
       </ul>
